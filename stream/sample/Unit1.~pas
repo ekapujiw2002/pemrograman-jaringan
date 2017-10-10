@@ -312,7 +312,7 @@ end;
 procedure TForm1.Button2Click(Sender: TObject);
 begin
   Ms1.Position := 0; // go to begin
-  Ms2.Position := Ms2.Size;
+  Ms2.Position := Ms2.Size-1;
   Ms2.CopyFrom(Ms1, Ms1.Size);
 
   if MessageDlg('Show the data? This will take forever on big data,hehehe',

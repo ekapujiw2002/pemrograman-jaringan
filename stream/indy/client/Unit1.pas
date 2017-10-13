@@ -94,7 +94,7 @@ try
     stream_file:=TMemoryStream.Create;
     stream_file.Position:=0;
     stream_file.LoadFromFile(dlgOpen1.FileName);
-    idtcpclnt1.IOHandler.Write(stream_file, stream_file.Size);
+    idtcpclnt1.IOHandler.Write(stream_file, 0, True);
     FreeAndNil(stream_file);
 //    idtcpclnt1.IOHandler.WriteFile(dlgOpen1.FileName);
   end;

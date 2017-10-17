@@ -1,7 +1,7 @@
 object Form1: TForm1
   Left = 398
   Top = 232
-  Width = 356
+  Width = 514
   Height = 364
   Caption = 'SERVER STREAM'
   Color = clBtnFace
@@ -13,10 +13,20 @@ object Form1: TForm1
   OldCreateOrder = False
   Position = poScreenCenter
   DesignSize = (
-    340
-    326)
+    506
+    337)
   PixelsPerInch = 96
   TextHeight = 16
+  object imgPreview: TImage
+    Left = 328
+    Top = 40
+    Width = 169
+    Height = 169
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Center = True
+    Proportional = True
+    Stretch = True
+  end
   object btnOpen: TBitBtn
     Left = 8
     Top = 8
@@ -29,9 +39,8 @@ object Form1: TForm1
   object mmoLog: TMemo
     Left = 8
     Top = 40
-    Width = 321
+    Width = 313
     Height = 273
-    Anchors = [akLeft, akTop, akRight, akBottom]
     ReadOnly = True
     ScrollBars = ssVertical
     TabOrder = 1

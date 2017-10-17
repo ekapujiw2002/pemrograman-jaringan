@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 343
-  Top = 273
+  Left = 203
+  Top = 180
   Width = 534
   Height = 390
   Caption = 'CLIENT STREAM'
@@ -12,8 +12,21 @@ object Form1: TForm1
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  DesignSize = (
+    526
+    363)
   PixelsPerInch = 96
   TextHeight = 16
+  object imgPreview: TImage
+    Left = 320
+    Top = 40
+    Width = 201
+    Height = 193
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Center = True
+    Proportional = True
+    Stretch = True
+  end
   object btnConnect: TBitBtn
     Left = 8
     Top = 8
@@ -35,7 +48,7 @@ object Form1: TForm1
   object mmoLog: TMemo
     Left = 8
     Top = 40
-    Width = 505
+    Width = 305
     Height = 305
     ReadOnly = True
     ScrollBars = ssVertical
@@ -50,6 +63,24 @@ object Form1: TForm1
     TabOrder = 3
     OnClick = btnSendFileClick
   end
+  object btnSendPicture: TBitBtn
+    Left = 328
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = '&Pic'
+    TabOrder = 4
+    OnClick = btnSendPictureClick
+  end
+  object btnScreenshot: TBitBtn
+    Left = 408
+    Top = 8
+    Width = 97
+    Height = 25
+    Caption = 'S&creen'
+    TabOrder = 5
+    OnClick = btnScreenshotClick
+  end
   object idtcpclnt1: TIdTCPClient
     OnDisconnected = idtcpclnt1Disconnected
     OnConnected = idtcpclnt1Connected
@@ -57,12 +88,17 @@ object Form1: TForm1
     IPVersion = Id_IPv4
     Port = 0
     ReadTimeout = -1
-    Left = 16
-    Top = 56
+    Left = 233
+    Top = 167
   end
   object dlgOpen1: TOpenDialog
     Options = [ofHideReadOnly, ofPathMustExist, ofFileMustExist, ofEnableSizing]
-    Left = 176
-    Top = 128
+    Left = 265
+    Top = 167
+  end
+  object tmr1: TTimer
+    OnTimer = tmr1Timer
+    Left = 160
+    Top = 120
   end
 end

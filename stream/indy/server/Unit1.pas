@@ -7,7 +7,9 @@ uses
   Dialogs, IdCmdTCPServer, IdBaseComponent, IdComponent, IdCustomTCPServer,
   IdTCPServer, StdCtrls, Buttons,
 
-  IdContext;
+  IdContext, ExtCtrls,
+
+  jpeg;
 
 type
   TForm1 = class(TForm)
@@ -15,6 +17,7 @@ type
     btnOpen: TBitBtn;
     mmoLog: TMemo;
     btnClose: TBitBtn;
+    imgPreview: TImage;
     procedure btnOpenClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure idtcpsrvr1Execute(AContext: TIdContext);
@@ -76,6 +79,7 @@ procedure TForm1.idtcpsrvr1Execute(AContext: TIdContext);
 var
   cmdx: string;
   stream_server: TMemoryStream;
+  jpgx: TJPEGImage;
 begin
   try
     cmdx := AContext.Connection.IOHandler.ReadLn();
@@ -98,13 +102,35 @@ begin
         LogData(mmoLog, 'Receiving stream...');
         stream_server := TMemoryStream.Create;
         stream_server.Position := 0;
-//        AContext.Connection.IOHandler.ReadTimeout := 5000;
+        //        AContext.Connection.IOHandler.ReadTimeout := 5000;
         AContext.Connection.IOHandler.ReadStream(stream_server);
         stream_server.SaveToFile(cmdx);
         FreeAndNil(stream_server);
         LogData(mmoLog, 'Receive stream finish');
 
       end;
+    end;
+
+    if cmdx = 'image' then
+    begin
+      LogData(mmoLog, 'Receiving stream...');
+      stream_server := TMemoryStream.Create;
+      stream_server.Position := 0;
+      //        AContext.Connection.IOHandler.ReadTimeout := 5000;
+      AContext.Connection.IOHandler.ReadStream(stream_server);
+      //      stream_server.SaveToFile(cmdx);
+
+      stream_server.Position := 0;
+      //      imgPreview.Picture.Bitmap.LoadFromStream(stream_server);
+
+      jpgx := TJPEGImage.Create;
+      jpgx.LoadFromStream(stream_server);
+      imgPreview.Picture.Assign(jpgx);
+      imgPreview.Repaint;
+      FreeAndNil(jpgx);
+
+      LogData(mmoLog, 'Receive stream finish '+inttostr(stream_server.Size));
+      FreeAndNil(stream_server);
     end;
 
   except

@@ -166,8 +166,8 @@ object Form1: TForm1
     OnExecute = BMDThread1Execute
     OnStart = BMDThread1Start
     OnTerminate = BMDThread1Terminate
-    Left = 232
-    Top = 40
+    Left = 255
+    Top = 138
   end
   object BMDThread2: TBMDThread
     ThreadGroup = BMDThreadGroup1
@@ -176,22 +176,22 @@ object Form1: TForm1
     OnExecute = BMDThread2Execute
     OnStart = BMDThread2Start
     OnTerminate = BMDThread2Terminate
-    Left = 232
-    Top = 152
+    Left = 223
+    Top = 138
   end
   object BMDThreadGroup1: TBMDThreadGroup
     OnUpdate = BMDThreadGroup1Update
     OnStart = BMDThreadGroup1Start
     OnTerminate = BMDThreadGroup1Terminate
-    Left = 232
-    Top = 208
+    Left = 287
+    Top = 138
   end
   object bmdthrd1: TBMDThread
     UpdateEnabled = False
     OnExecute = bmdthrd1Execute
     OnStart = bmdthrd1Start
     OnTerminate = bmdthrd1Terminate
-    Left = 232
-    Top = 8
+    Left = 191
+    Top = 138
   end
 end

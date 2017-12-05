@@ -1,7 +1,7 @@
 object Form1: TForm1
   Left = 192
   Top = 164
-  Width = 676
+  Width = 986
   Height = 393
   Caption = 'HTTP CLIENT DEMO'
   Color = clBtnFace
@@ -13,7 +13,7 @@ object Form1: TForm1
   OldCreateOrder = False
   Position = poScreenCenter
   DesignSize = (
-    660
+    970
     355)
   PixelsPerInch = 96
   TextHeight = 16
@@ -29,21 +29,42 @@ object Form1: TForm1
   object edt1: TEdit
     Left = 88
     Top = 8
-    Width = 567
+    Width = 417
     Height = 24
-    Anchors = [akLeft, akTop, akRight]
     TabOrder = 1
-    Text = 'https://www.tokopedia.com/search?q=box'
+    Text = 'http://www.google.com/search?q=box'
   end
   object mmo1: TMemo
     Left = 8
     Top = 40
-    Width = 648
+    Width = 497
     Height = 305
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Anchors = [akLeft, akTop, akBottom]
     ReadOnly = True
     ScrollBars = ssVertical
     TabOrder = 2
+  end
+  object wb1: TWebBrowser
+    Left = 512
+    Top = 40
+    Width = 449
+    Height = 305
+    TabOrder = 3
+    ControlData = {
+      4C000000682E0000861F00000000000000000000000000000000000000000000
+      000000004C000000000000000000000001000000E0D057007335CF11AE690800
+      2B2E126208000000000000004C0000000114020000000000C000000000000046
+      8000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000100000000000000000000000000000000000000}
+  end
+  object btn2: TBitBtn
+    Left = 512
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = 'Open'
+    TabOrder = 4
+    OnClick = btn2Click
   end
   object idhttp1: TIdHTTP
     IOHandler = idslhndlrscktpnsl1

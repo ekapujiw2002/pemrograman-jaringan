@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient,
   IdHTTP, StdCtrls, Buttons, IdIOHandler, IdIOHandlerSocket,
-  IdIOHandlerStack, IdSSL, IdSSLOpenSSL;
+  IdIOHandlerStack, IdSSL, IdSSLOpenSSL, OleCtrls, SHDocVw;
 
 type
   TForm1 = class(TForm)
@@ -15,7 +15,10 @@ type
     edt1: TEdit;
     mmo1: TMemo;
     idslhndlrscktpnsl1: TIdSSLIOHandlerSocketOpenSSL;
+    wb1: TWebBrowser;
+    btn2: TBitBtn;
     procedure btn1Click(Sender: TObject);
+    procedure btn2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,6 +47,11 @@ begin
       mmo1.Text := 'Error ' + err.Message;
     end;
   end;
+end;
+
+procedure TForm1.btn2Click(Sender: TObject);
+begin
+  wb1.Navigate(edt1.Text);
 end;
 
 end.

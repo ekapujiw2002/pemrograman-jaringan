@@ -5,18 +5,17 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient,
-  IdHTTP, StdCtrls, Buttons, IdIOHandler, IdIOHandlerSocket,
-  IdIOHandlerStack, IdSSL, IdSSLOpenSSL, OleCtrls, SHDocVw;
+  IdExplicitTLSClientServerBase, IdFTP, StdCtrls, Buttons,
+  IdAntiFreezeBase, IdAntiFreeze;
 
 type
   TForm1 = class(TForm)
-    idhttp1: TIdHTTP;
+    idftp1: TIdFTP;
     btn1: TBitBtn;
-    edt1: TEdit;
-    mmo1: TMemo;
-    idslhndlrscktpnsl1: TIdSSLIOHandlerSocketOpenSSL;
-    wb1: TWebBrowser;
     btn2: TBitBtn;
+    lbl1: TLabel;
+    dlgOpen1: TOpenDialog;
+    idntfrz1: TIdAntiFreeze;
     procedure btn1Click(Sender: TObject);
     procedure btn2Click(Sender: TObject);
   private
@@ -35,23 +34,37 @@ implementation
 procedure TForm1.btn1Click(Sender: TObject);
 begin
   try
-    with idhttp1 do
+    with idftp1 do
     begin
+      Host := '127.0.0.1';
+      Username := 'tester';
+      Password := '123456';
+      Port := 21;
       ConnectTimeout := 10000;
-      ReadTimeout := 15000;
-      mmo1.Text := Get(edt1.Text);
+      Connect;
+      ShowMessage('Koneksi OK');
+      ChangeDir('tester');
+      ShowMessage(RetrieveCurrentDir);
     end;
   except
-    on err: Exception do
+    on e: Exception do
     begin
-      mmo1.Text := 'Error ' + err.Message;
+      ShowMessage(e.Message);
     end;
   end;
 end;
 
 procedure TForm1.btn2Click(Sender: TObject);
 begin
-wb1.Navigate(edt1.Text);
+  try
+    if dlgOpen1.Execute then
+    begin
+      lbl1.Caption := dlgOpen1.FileName;
+      idftp1.Put(dlgOpen1.FileName);
+    end;
+  except
+
+  end;
 end;
 
 end.
